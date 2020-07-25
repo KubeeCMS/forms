@@ -1,0 +1,2 @@
+### 2.4.19.1
+- Fixed an issue with the empty form validation ignoring the values of fields with visibility set to hidden.

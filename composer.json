@@ -1,0 +1,16 @@
+{
+    "name": "kubeecms/forms",
+    "description": "Easily create web forms and manage form entries within the KCMS admin.",
+    "keywords": ["kubee", "kubeecms", "forms"],
+    "homepage": "https://github.com/kubeecms/forms",
+    "authors": [
+      {
+        "name": "Kubee CMS",
+        "homepage": "https://github.com/KubeeCMS/"
+      }
+    ],
+    "type": "wordpress-plugin",
+    "require": {
+      "php": ">=7.2"
+    }
+  }
