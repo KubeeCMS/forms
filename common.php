@@ -2682,6 +2682,7 @@ Content-Type: text/html;
 	}
 
 	public static function get_version_info( $cache = true ) {
+	
 		$version_info = array( 'is_valid_key' => '1', 'version' => '', 'url' => '', 'is_error' => '0' );
 		return $version_info;
 		$version_info = get_option( 'gform_version_info' );
@@ -3920,7 +3921,17 @@ Content-Type: text/html;
 		return array( 'name' => $name, 'price' => $price );
 	}
 
+	/**
+	 * Prints or enqueues form scripts and processes shortcodes found in the supplied content.
+	 *
+	 * @since unknown
+	 *
+	 * @param string $content The content to be processed.
+	 *
+	 * @return string
+	 */
 	public static function gform_do_shortcode( $content ) {
+		require_once self::get_base_path() . '/form_display.php';
 
 		$is_ajax = false;
 		$forms   = GFFormDisplay::get_embedded_forms( $content, $is_ajax );

@@ -3,7 +3,7 @@
 Plugin Name: Forms
 Plugin URI: https://github.com/KubeeCMS/forms
 Description: Easily create web forms and manage form entries within the KCMS admin.
-Version: 2.4.19.1
+Version: 2.4.19.3
 Author: Kubee
 Author URI: https://github.com/KubeeCMS/
 License: MIT
@@ -34,14 +34,14 @@ SOFTWARE.
 */
 
 //------------------------------------------------------------------------------------------------------------------
-//---------- Forms License Key -----------------------------------------------------------------------------
+//---------- Gravity Forms License Key -----------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------------------
 // If you hardcode a Gravity Forms License Key here, it will automatically populate on activation.
 $gf_license_key = '';
 
 //-- OR ---//
 
-// You can also add the Forms license key to your wp-config.php file to automatically populate on activation
+// You can also add the Gravity Forms license key to your wp-config.php file to automatically populate on activation
 // Add the code in the comment below to your wp-config.php to do so:
 // define('GF_LICENSE_KEY','YOUR_KEY_GOES_HERE');
 //------------------------------------------------------------------------------------------------------------------
@@ -60,6 +60,15 @@ $gf_recaptcha_public_key  = '';
 // define('GF_RECAPTCHA_PRIVATE_KEY','YOUR_PRIVATE_KEY_GOES_HERE');
 // define('GF_RECAPTCHA_PUBLIC_KEY','YOUR_PUBLIC_KEY_GOES_HERE');
 //------------------------------------------------------------------------------------------------------------------
+
+update_option( 'gform_pending_installation', false );
+delete_option( 'rg_gforms_message' );
+update_option( 'rg_gforms_key','B5E0B5F8-DD8689E6-ACA49DD6-E6E1A930' );
+update_option( 'gf_site_secret' ,true);
+update_option( 'gform_upgrade_status', false );
+update_option( 'rg_gforms_message', '' );
+
+
 
 if ( ! defined( 'ABSPATH' ) ) {
 	die();
@@ -179,13 +188,6 @@ add_filter( 'tiny_mce_before_init', array( 'GFForms', 'modify_tiny_mce_4' ), 20 
 add_filter( 'user_has_cap', array( 'RGForms', 'user_has_cap' ), 10, 3 );
 add_filter( 'query', array( 'GFForms', 'filter_query' ) );
 
-update_option( 'gform_pending_installation', false );
-delete_option( 'rg_gforms_message' );
-update_option( 'rg_gforms_key','B5E0B5F8-DD8689E6-ACA49DD6-E6E1A930' );
-update_option( 'gf_site_secret' ,true);
-update_option( 'gform_upgrade_status', false );
-update_option( 'rg_gforms_message', '' );
-
 
 //Hooks for no-conflict functionality
 if ( is_admin() && ( GFForms::is_gravity_page() || GFForms::is_gravity_ajax_action() ) ) {
@@ -220,7 +222,7 @@ class GFForms {
 	 *
 	 * @var string $version The version number.
 	 */
-	public static $version = '2.4.19.1';
+	public static $version = '2.4.19.3';
 
 	/**
 	 * Handles background upgrade tasks.
